@@ -177,7 +177,7 @@ const triggerAction = (word) => {
         statusMessage.value = "監視中..."
         startRecognition()
         lockTimeout = null
-    }, 1500)
+    }, 2500)
 }
 
 const playSound = () => {
