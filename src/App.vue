@@ -28,13 +28,13 @@ const targetWords = [
 
 // 音声ファイル候補 (publicフォルダに配置)
 const audioOptions = [
-    { label: "日本語機械音声", path: "/ja_translate.mp3" },
-    { label: "英語機械音声", path: "/en_translate.mp3" },
-    { label: "ゆっくりボイス", path: "/yukkuri.mp3" },
-    { label: "すぅぅぅぅ", path: "/suuu.mp3" },
+    { label: "日本語機械音声", path: "ja_translate.mp3" },
+    { label: "英語機械音声", path: "en_translate.mp3" },
+    { label: "ゆっくりボイス", path: "yukkuri.mp3" },
+    { label: "すぅぅぅぅ", path: "suuu.mp3" },
 ]
 const selectedAudio = ref(audioOptions[0].path)
-let audio = new Audio(selectedAudio.value)
+let audio = new Audio(import.meta.env.BASE_URL + selectedAudio.value)
 
 onMounted(() => {
     const SpeechRecognition =
@@ -146,7 +146,7 @@ const setAudio = (path) => {
     selectedAudio.value = path
     audio.pause()
     audio.currentTime = 0
-    audio.src = path
+    audio.src = import.meta.env.BASE_URL + path
     audio.load()
 }
 
